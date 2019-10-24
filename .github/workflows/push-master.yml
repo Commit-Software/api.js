@@ -29,25 +29,25 @@ jobs:
           yarn install --frozen-lockfile
           yarn polkadot-dev-ghact-build
 
-  build_docs:
-    name: Build Docs
-    if: "! contains(github.event.head_commit.message, '[CI Skip]')"
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [12.x]
-    steps:
-      - uses: actions/checkout@v1
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: build
-        env:
-          GH_PAT: ${{ secrets.GH_PAT }}
-          GH_TOKEN: ${{ secrets.GH_PAT }}
-          GH_PAGES_SRC: build-docs
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          yarn install --frozen-lockfile
-          yarn polkadot-dev-ghact-docs
+#  build_docs:
+#    name: Build Docs
+#    if: "! contains(github.event.head_commit.message, '[CI Skip]')"
+#    runs-on: ubuntu-latest
+#    strategy:
+#      matrix:
+#        node-version: [12.x]
+#    steps:
+#      - uses: actions/checkout@v1
+#      - name: Use Node.js ${{ matrix.node-version }}
+#        uses: actions/setup-node@v1
+#        with:
+#          node-version: ${{ matrix.node-version }}
+#      - name: build
+#        env:
+#          GH_PAT: ${{ secrets.GH_PAT }}
+#          GH_TOKEN: ${{ secrets.GH_PAT }}
+#          GH_PAGES_SRC: build-docs
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#        run: |
+#          yarn install --frozen-lockfile
+#          yarn polkadot-dev-ghact-docs
